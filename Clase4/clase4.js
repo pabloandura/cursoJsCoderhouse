@@ -69,26 +69,48 @@ const sumar4 = (a,b) => a+b
 
  //declaro el operador de do while
 let exit = false;
- //declaro variables de contado estadistico
+ //declaro variables para operar estadistica
 let i = 0;// contador de estudiantes
 let sumOfGrades = 0; // to create an average we need to sum all grades
 const passingGrade = 7; // to compare and count the amount of students that passed
 let passingStudents = 0;
+//defino una variable de nombre de Estudiante
+let studentName;
+// defino una variable para guardar la nota en cada iteracion
+let grade;
+// defino una variable para guardar valores maximos
+let maxStudent;
+let maxGrade = 0;
 
 // Iniciamos el do while que controlara el comienzo y fin de entrada de datos 
 // previos a la estadistica en pantalla.
 do{
 // Ingresamos el nombre del estudiante verificando que se haya ingresa un obj String
-while(typeof(studentName) === typeof('asd')) {let studentName = prompt("Insert the student's name: ");}
-let grade = prompt(`What is ${studentName}'s grade in this assignment.`);
+studentName = prompt("Insert the student's name: ");
+grade = parseInt(prompt(`What is ${studentName}'s grade in this assignment.`));
 // we count one student input
     i++;
 // we add the grade to our sumOfGrades to later calculate the average
     sumOfGrades += grade;
+// verificamos si la nota es maxima
+    if(grade>=maxGrade){
+        maxGrade = grade;
+        maxStudent = studentName;
+    }
 // we compare if they passed
-    if (grade >= passingGrade) passingStudents++;
+    if (grade >= passingGrade) 
+        passingStudents++;
 // we ask if we wish to continue
-    if(prompt('Do you wish to continue entering grades? yes/no') === 'yes') exit = true;
-}while(exit === true);
+let op = prompt('Do you wish to continue entering grades? yes/no')
+    if( op === 'no') // esto puede ser mas eficiente pero funciona.
+        exit = true;
+}while(exit === false);
 
+// parte de impresion de estadisticas
 
+document.open()
+document.write(`<h3>Nota mas alta: ${maxGrade} obtenida por: ${maxStudent}.</h3>`);
+let promedio = parseFloat(sumOfGrades)/i
+document.write(`<h3>La media de las notas es ${promedio}.</h3>`)
+document.write(`<h3>El numero total de estudiantes fue: ${i}, y los que aprobaron fueron: ${passingStudents}`)
+document.close()
