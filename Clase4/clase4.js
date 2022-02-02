@@ -88,19 +88,19 @@ do{
 // Ingresamos el nombre del estudiante verificando que se haya ingresa un obj String
 studentName = prompt("Insert the student's name: ");
 grade = parseInt(prompt(`What is ${studentName}'s grade in this assignment.`));
-// we count one student input
+// contamos cada estudiante
     i++;
-// we add the grade to our sumOfGrades to later calculate the average
+// agregamos sumOfGrades la nota actual para luego hacer el promedio
     sumOfGrades += grade;
 // verificamos si la nota es maxima
     if(grade>=maxGrade){
         maxGrade = grade;
         maxStudent = studentName;
     }
-// we compare if they passed
+// verificamos si aprobo
     if (grade >= passingGrade) 
         passingStudents++;
-// we ask if we wish to continue
+// preguntamos si desea continuar
 let op = prompt('Do you wish to continue entering grades? yes/no')
     if( op === 'no') // esto puede ser mas eficiente pero funciona.
         exit = true;
@@ -110,7 +110,7 @@ let op = prompt('Do you wish to continue entering grades? yes/no')
 
 document.open()
 document.write(`<h3>Nota mas alta: ${maxGrade} obtenida por: ${maxStudent}.</h3>`);
-let promedio = parseFloat(sumOfGrades)/i
+promedio = parseFloat(sumOfGrades)/i
 document.write(`<h3>La media de las notas es ${promedio}.</h3>`)
 document.write(`<h3>El numero total de estudiantes fue: ${i}, y los que aprobaron fueron: ${passingStudents}`)
 document.close()
