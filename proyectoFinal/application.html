@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>groundCheck.com</title>
+</head>
+<body style="background-color: blanchedalmond;">
+
+<div class="row mt-5 p-5">
+    <div class="col-3"></div> <!--Empty for proportion-->
+    <div class="main col-6 p-2" style="box-shadow:black 10px 10px;background-color: rgb(255, 194, 82);">
+        <h1 class="container-fluid py-3">Let's get grounded</h1>
+        <h4 class="container-fluid">Insert here the item you would like to save its relationship with the Dolar Blue</h4>
+        <div class="container-fluid">
+            <form>
+                    <label style="float: left;" for="key1" >Item Name/Number:</label><br>
+                    <input type="text" class="p-1" id="key1" value="id"><br><br>
+                    <label for="key2">Current Value:</label><br>
+                    <input type="text" class="p-1" id="key2"  value="currentValue"><br><br>
+                    <input type="submit" class="p-2" value="groundIt">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6" style="box-shadow:black 10px 10px;background-color: rgb(255, 194, 82);">
+        <h2>Currently grounded:</h2>
+        <div class="container-fluid">Actualmente en construccion, valores obtenidos por consola.</div>
+    </div>
+</div>
+    <script src="app.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

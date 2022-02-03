@@ -1,0 +1,25 @@
+{
+  "name": "proyectofinal",
+  "version": "1.0.0",
+  "description": "proyecto final del curso de Javascript de CoderHouse",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pabloandura/cursoJsCoderhouse.git"
+  },
+  "keywords": [
+    "coderhouse"
+  ],
+  "author": "Pablo Andura",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pabloandura/cursoJsCoderhouse/issues"
+  },
+  "homepage": "https://github.com/pabloandura/cursoJsCoderhouse#readme",
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  }
+}
