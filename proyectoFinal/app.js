@@ -3,19 +3,18 @@
 class GroundedItem{
     constructor(id,value){
         this.id = id,
-        this.value = value
-        this.archived = false;
+        this.value = value,
+        this.archived = false,
+        this.arsOriginal = value
     }
 }
 
-
-
-
-
 url = 'https://api.bluelytics.com.ar/v2/latest'
+let informacionAPI
 fetch(url)
   .then(response => response.json())
   .then(formatedResponse =>  console.log(formatedResponse))
+  
 
 // valor del dolar blue hasta que entienda como guardar el objeto json
 const dolarBlue = 217;
@@ -29,17 +28,6 @@ groundedArray = []
 // y obtener este json.
 groundedArray.push(new GroundedItem('tomate1kg',35));
 groundedArray.push(new GroundedItem('galletitasFrutigram',150));
-
-// do{
-// let tempName = prompt('Insert the name of them Item to ground:');
-// let tempValue = prompt('Insert the current ARS $ Price to maintain its relation.');
-// tempValue = parseFloat(tempValue);
-// let itemAGuardar = new GroundedItem(tempName,tempValue);
-// arrayItems.push(itemAGuardar);
-// let operador = prompt('Do you wish to continue entering information yes/no')
-//  if(operador === 'yes') exit = false;
-//  else exit = true;
-// }while(exit === false)
 
 for(const card of arrayItems){
     let dolares = card.value/dolarBlue
@@ -57,7 +45,7 @@ for(const item of groundedArray){
         contenedor.innerHTML = 
             `
             <h5 style='display: inline;'>&emsp;    ID: ${item.id}</h5>
-            <b>&emsp;$ ${item.value}</b>&emsp;<button>Archive</button>
+            <b>&emsp;$ ${item.value}</b>&emsp;<button class='formText p-1' >Archive</button>
             <hr>
             `
         currentlyGrounded.appendChild(contenedor)
@@ -68,6 +56,17 @@ for(const item of groundedArray){
 const form = document.getElementById('newItemForm');
     form.addEventListener('submit',function(event){
         event.preventDefault();
-        console.log(event)
-    })
-let currentlyGrounding = Array.from(document.querySelectorAll('#newItemForm input')).reduce((acc,input)=>({...acc,[input.id]: input.value}), {});
+        let tempID = event.target[0].value;
+        let tempVal = event.target[1].value;
+        let itemAGuardar = new GroundedItem(tempID,tempVal);
+        arrayItems.push(itemAGuardar);
+        let contenedor = document.createElement('div');
+        contenedor.innerHTML = 
+            `
+            <h5 style='display: inline;'>&emsp;    ID: ${itemAGuardar.id}</h5>
+            <b>&emsp;$ ${itemAGuardar.value}</b>&emsp;<button class='formText p-1' >Archive</button>
+            <hr>
+            `
+        currentlyGrounded.appendChild(contenedor)
+    }
+)
