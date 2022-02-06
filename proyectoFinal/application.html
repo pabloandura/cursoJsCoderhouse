@@ -15,21 +15,21 @@
         <h1 class="container-fluid py-3">Let's get grounded</h1>
         <h4 class="container-fluid">Insert here the item you would like to save its relationship with the Dolar Blue</h4>
         <div class="container-fluid">
-            <form>
-                    <label style="float: left;" for="key1" >Item Name/Number:</label><br>
-                    <input type="text" class="p-1" id="key1" value="id"><br><br>
-                    <label for="key2">Current Value:</label><br>
-                    <input type="text" class="p-1" id="key2"  value="currentValue"><br><br>
-                    <input type="submit" class="p-2" value="groundIt">
+            <form id="newItemForm">
+                    <label style="float: left;" for="itemID" >Item Name/Number:</label><br>
+                    <input type="text" class="formText p-1" id="itemID"><br><br>
+                    <label for="itemValue">Current Value:</label><br>
+                    <input type="text" class="formText p-1" id="itemValue"><br><br>
+                    <button type="submit" class="formText p-2"></button>
             </form>
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row mt-1">
     <div class="col-3"></div>
     <div class="col-6" style="box-shadow:black 10px 10px;background-color: rgb(255, 194, 82);">
-        <h2>Currently grounded:</h2>
-        <div class="container-fluid">Actualmente en construccion, valores obtenidos por consola.</div>
+        <h2 class="mt-2">Currently grounded:</h2>
+        <div class="container-fluid my-4" id="currentlyGrounded"></div>
     </div>
 </div>
     <script src="app.js"></script>
