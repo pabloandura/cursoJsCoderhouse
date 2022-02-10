@@ -1,5 +1,15 @@
-/* Objetos */
+// request a la api de info actualizada
+url = 'https://api.bluelytics.com.ar/v2/latest'
 
+fetch(url)
+  .then(response => response.json())
+  .then(formatedResponse =>  console.log(formatedResponse))
+
+
+// valor del dolar blue hasta que entienda como guardar el objeto json
+const dolarBlue = 217;
+
+/* Objetos */
 class GroundedItem{
     constructor(id,value){
         this.id = id,
@@ -9,15 +19,7 @@ class GroundedItem{
     }
 }
 
-url = 'https://api.bluelytics.com.ar/v2/latest'
-let informacionAPI
-fetch(url)
-  .then(response => response.json())
-  .then(formatedResponse =>  console.log(formatedResponse))
-  
 
-// valor del dolar blue hasta que entienda como guardar el objeto json
-const dolarBlue = 217;
 // operador de salida
 let exit = false;
 // grounded item array
