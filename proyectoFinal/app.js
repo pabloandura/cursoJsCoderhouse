@@ -1,74 +1,37 @@
-// request a la api de info actualizada
-url = 'https://api.bluelytics.com.ar/v2/latest'
-
-fetch(url)
-  .then(response => response.json())
-  .then(formatedResponse =>  console.log(formatedResponse))
-
-
-// valor del dolar blue hasta que entienda como guardar el objeto json
-const dolarBlue = 217;
-
-/* Objetos */
-class GroundedItem{
-    constructor(id,value){
-        this.id = id,
-        this.value = value,
-        this.archived = false,
-        this.arsOriginal = value
-    }
-}
-
-
-// operador de salida
-let exit = false;
-// grounded item array
-let arrayItems = [];
-
-groundedArray = []
-// Aca hay que cargar el array con la informacion de la base de datos. 
-// y obtener este json.
-groundedArray.push(new GroundedItem('tomate1kg',35));
-groundedArray.push(new GroundedItem('galletitasFrutigram',150));
-
-for(const card of arrayItems){
-    let dolares = card.value/dolarBlue
-    console.log(`El item: ${card.id}, tiene un valor de: ${dolares} dolares.`);
-}
-// luego guardo este valor en una base de datos y actualizo la lista de groundedItems.
-
+// rellenar nuestra pagina con los objetos que estamos analizando
 const currentlyGrounded = document.getElementById('currentlyGrounded')
-
-// por cada objeto en el array
-for(const item of groundedArray){
-    if(item.archived===false){
-        let contenedor = document.createElement('div');
-        item.value = item.value / dolarBlue;
-        contenedor.innerHTML = 
-            `
-            <h5 style='display: inline;'>&emsp;    ID: ${item.id}</h5>
-            <b>&emsp;$ ${item.value}</b>&emsp;<button class='formText p-1' >Archive</button>
-            <hr>
-            `
-        currentlyGrounded.appendChild(contenedor)
-    }
+for(const item of ITEMS){
+    let contenedor = document.createElement('div');
+    contenedor.innerHTML = 
+        `
+        <h5 style='display: inline;'>&emsp;    ID: ${item.id}</h5>
+        <b>&emsp;</b>&emsp;<button class='formText p-1' >Archive</button>
+        <hr>
+        `
+    currentlyGrounded.appendChild(contenedor)
 }
-
+/* EVENTOS */
+// cuando se cambie un tipo de groundedItem del elemento Select del DOM
+const selectedItem = document.getElementById('itemID');
+    selectedItem.onchange = event => {
+        if(event.target.value !== 'selectHere'){ // si no es el comienzo generico de la lista <select>
+            const graphTitle = document.getElementById('graphTitle'); // selecciono
+            graphTitle.innerHTML = `Historical price comparison for "${event.target.value}".` // agrego al string el nombre de seleccion
+            showGraph();
+        } else {
+            const graphTitle = document.getElementById('graphTitle'); // selecciono
+            graphTitle.innerHTML = `Please select a product to show statistics.` // llamada a accion
+            document.getElementById('graph').style = 'display: none;' // oculto grafico
+        }
+    }
 // guardamos informacion del form
 const form = document.getElementById('newItemForm');
     form.addEventListener('submit',function(event){
         event.preventDefault();
-        let tempID = event.target[0].value;
+        let selectedItem = event.target[0].selectedIndex
+        let tempID = event.target[0][selectedItem].value
         let tempVal = event.target[1].value;
-        let itemAGuardar = new GroundedItem(tempID,tempVal);
-        arrayItems.push(itemAGuardar);
-        let contenedor = document.createElement('div');
-        contenedor.innerHTML = 
-            `
-            <h5 style='display: inline;'>&emsp;    ID: ${itemAGuardar.id}</h5>
-            <b>&emsp;$ ${itemAGuardar.value}</b>&emsp;<button class='formText p-1' >Archive</button>
-            <hr>
-            `
-        currentlyGrounded.appendChild(contenedor)
+        let itemAGuardar = new GroundedLog(tempID,tempVal);
+        fideosSecos.logs.push(itemAGuardar);
     }
 )

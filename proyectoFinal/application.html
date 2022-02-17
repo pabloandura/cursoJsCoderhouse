@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Importamos Bootstrap por sus estilos -->
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <!-- Importamos Plotly para los graficos en vivo -->
+    <script src="node_modules\plotly.js-dist\plotly.js"></script>
     <title>groundCheck.com</title>
 </head>
 <body style="background-color: blanchedalmond;">
@@ -13,14 +16,19 @@
     <div class="col-3"></div> <!--Empty for proportion-->
     <div class="main col-6 p-2" style="box-shadow:black 10px 10px;background-color: rgb(255, 194, 82);">
         <h1 class="container-fluid py-3">Let's get grounded</h1>
-        <h4 class="container-fluid">Insert here the item you would like to save its relationship with the Dolar Blue</h4>
+        <h4 class="container-fluid">Select here the item you would like to save its current relationship with the Dolar Blue</h4>
         <div class="container-fluid">
             <form id="newItemForm">
-                    <label style="float: left;" for="itemID" >Item Name/Number:</label><br>
-                    <input type="text" class="formText p-1" id="itemID"><br><br>
-                    <label for="itemValue">Current Value:</label><br>
-                    <input type="text" class="formText p-1" id="itemValue"><br><br>
-                    <button type="submit" class="formText p-1">groundIt</button>
+                <select name="commodity" id="itemID" class='formText'>
+                    <option value="selectHere">Pick one.</option>
+                    <option value="fideosSecos">Fideos Secos</option>
+                    <option value="pollo">Pollo Entero (coming soon)</option>
+                    <option value="azucar">Azucar Blanca (coming soon)</option>
+                </select>
+                <br>
+                <label for="itemValue">Current Value:</label><br>
+                <input type="text" class="formText p-1" id="itemValue"><br><br>
+                <button type="submit" class="formText p-1">groundIt</button>
             </form>
         </div>
     </div>
@@ -32,6 +40,18 @@
         <div class="container-fluid my-4" id="currentlyGrounded"></div>
     </div>
 </div>
+<div class="row mt-5 py-5">
+    <div class="col-3"></div>
+        <div class="col-6" style="box-shadow:black 10px 10px;background-color: rgb(255, 194, 82);">
+            <h4 id='graphTitle' class="mt-2">Please select an item from the dropdown.</h4>
+            <div id="graph"></div>
+        </div>
+</div>
+<hr>
+    <script src="api.js"></script>
+    <script src="graph.js"></script>
+    <script src="objets.js"></script>
+    <script src="db.js"></script>
     <script src="app.js"></script>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 </body>
