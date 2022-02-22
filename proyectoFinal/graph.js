@@ -27,6 +27,7 @@ function showGraph(){
         title: 'Values of Commodities in Dolar Blue by ID and Date',
         paper_bgcolor: "rgb(255, 194, 82)",
         plot_bgcolor: "rgb(255, 180, 110)",
+        legend: {orientation: 'h', side: 'top'}
     }   
 
     const config = {

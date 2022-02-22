@@ -28,11 +28,23 @@ const selectedItem = document.getElementById('itemID');
 const form = document.getElementById('newItemForm');
     form.addEventListener('submit',function(event){
         event.preventDefault();
+        // hubo una carga desde aca? ***
+        let cantidades = fideosSecos.logs.length;
+        // obtenemos el index del item seleccionado del dropdown
         let selectedItem = event.target[0].selectedIndex
+        // guardamos su nombre en tempID
         let tempID = event.target[0][selectedItem].value
+        // guardamos el valor 
         let tempVal = parseInt(event.target[1].value);
+        // creamos un nuevo log
         let itemAGuardar = new GroundedLog(tempID,tempVal);
+        // actualizamos su valor con ayuda de una api
         itemAGuardar.getValueBlue();
+        // guardamos 
         fideosSecos.logs.push(itemAGuardar);
+        // hasta aca? ***
+        let cantidades2 = fideosSecos.logs.length; // comparo las cargas
+            const doThis = (cantidades2 > cantidades) ? logEntry : logFail // toastify
+        doThis();
         }
 )
