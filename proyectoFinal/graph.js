@@ -1,30 +1,71 @@
-/* Funcion para mostrar la seccion de Graficos con libreria PlotlyJS */
-function showGraph(){
+/* Pre procesos para el grafico */
+const fechasDolar = [];
+const valorDolar = [];
 
-    let data = JSON.parse(sessionStorage.getItem('fideos'));
+for (let log of dataDolar){
+    let {date , compra} = log;
+    fechasDolar.push(date);
+    valorDolar.push(compra);
+}
+
+let dataFideos = JSON.parse(sessionStorage.getItem('fideos'));
 
     //creamos los arrays requeridos por plotly
-    let exes = [];
-    let greeks = [];
-    for(let info of data.logs){
-        exes.push(info.date);
-        greeks.push(info.value);
+const fechasFideo = [];
+const valorFideo = [];
+    for(let info of dataFideos.logs){
+        fechasFideo.push(info.date);
+        valorFideo.push(info.value);
     }
+
+/* Funcion para mostrar la seccion de Graficos con libreria PlotlyJS */
+function showGraph(){
 
     const graph = document.getElementById('graph');
 
     const layout = {
         title: 'Values of Commodities in Dolar Blue by ID and Date',
         paper_bgcolor: "rgb(255, 194, 82)",
-        plot_bgcolor: "rgb(255, 180, 110)"
-        
+        plot_bgcolor: "rgb(255, 180, 110)",
+    }   
+
+    const config = {
+        responsive: true,
+        editable: true
     }
-    Plotly.newPlot(graph,[{
-        type: 'scatter',      // grafico de puntos
-        x: exes,     // array de fechas en ms desde ES epoch (Como lo convierto a fechas?)
-        y: greeks,     // array de valores
-        name: `${data.id}` // nombre
-        }], 
-        layout
-        )
-    }
+    
+    Plotly.newPlot(graph,[
+        {
+            type: 'scatter',      // grafico de puntos
+            x: fechasFideo,     // array de fechas en ms desde ES epoch (Como lo convierto a fechas?)
+            y: valorFideo,     // array de valores
+            name: `${dataFideos.id}` // nombre
+        },
+        {
+            type: 'scatter',
+            x: fechasDolar,
+            y: valorDolar,
+            name: "Valor promedio del dolar."
+        }
+        ], 
+        layout,
+        config)
+}
+ // ESTA FUNCION ROMPE MI GRAFICO
+// function updatePlot(){
+//     let dataFideos = fideosSecos.logs
+
+//     //creamos los arrays requeridos por plotly
+//     let fechasFideos = [];
+//     let valorFideo = [];
+//     for(let info of dataFideos){
+//         fechasFideos.push(info.date);
+//         valorFideo.push(info.value);
+//     }
+
+//     const graph = document.getElementById('graph');
+//     Plotly.restyle(graph,{
+//         x: fechasFideos,     // array de fechas en ms desde ES epoch (Como lo convierto a fechas?)
+//         y: valorFideo,     // array de valores}])
+//     })
+// }

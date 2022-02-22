@@ -5,7 +5,7 @@ for(const item of ITEMS){
     contenedor.innerHTML = 
         `
         <h5 style='display: inline;'>&emsp;    ID: ${item.id}</h5>
-        <b>&emsp;</b>&emsp;<button class='formText p-1' >Archive</button>
+        <b>&emsp;</b>&emsp;
         <hr>
         `
     currentlyGrounded.appendChild(contenedor)
@@ -30,8 +30,9 @@ const form = document.getElementById('newItemForm');
         event.preventDefault();
         let selectedItem = event.target[0].selectedIndex
         let tempID = event.target[0][selectedItem].value
-        let tempVal = event.target[1].value;
+        let tempVal = parseInt(event.target[1].value);
         let itemAGuardar = new GroundedLog(tempID,tempVal);
+        itemAGuardar.getValueBlue();
         fideosSecos.logs.push(itemAGuardar);
-    }
+        }
 )
