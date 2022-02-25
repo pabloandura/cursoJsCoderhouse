@@ -44,7 +44,7 @@ const form = document.getElementById('newItemForm');
         fideosSecos.logs.push(itemAGuardar);
         // hasta aca? ***
         let cantidades2 = fideosSecos.logs.length; // comparo las cargas
-            const doThis = (cantidades2 > cantidades) ? logEntry : logFail // toastify
+        const doThis = (cantidades2 > cantidades) ? logEntry : logFail // toastify
         doThis();
-        }
-)
+        if(doThis === logEntry) updatePlot(Date.now(),tempVal)
+    })

@@ -13,38 +13,48 @@
 </head>
 <body style="background-color: blanchedalmond;">
 
-<div class="row mt-5 p-5">
-    <div class="col-3"></div> <!--Empty for proportion-->
-    <div class="main col-6 p-2" style="box-shadow:black 10px 10px;background-color: rgb(255, 194, 82);">
+<div class="row mt-5 py-5">
+    <div class="col-2"></div> <!--Empty for proportion-->
+    <div class="main col-8 p-2" style="box-shadow:black 10px 10px;background-color: rgb(255, 194, 82);">
         <h1 class="container-fluid py-3">Let's get grounded</h1>
         <h4 class="container-fluid">Select here the item you would like to save its current relationship with the Dolar Blue</h4>
         <div class="container-fluid">
             <form id="newItemForm">
-                <select name="commodity" id="itemID" class='formText'>
-                    <option value="selectHere">Pick one.</option>
-                    <option value="fideosSecos">Fideos Secos</option>
-                    <option value="pollo">Pollo Entero (coming soon)</option>
-                    <option value="azucar">Azucar Blanca (coming soon)</option>
-                </select>
-                <br>
-                <label for="itemValue">Current Value:</label><br>
-                <input type="text" class="formText p-1" id="itemValue"><br><br>
-                <button type="submit" class="formText p-1">groundIt</button>
+                <div class="row">
+                    <div class="col-6">
+                        <br>
+                        <select name="commodity" id="itemID" class='form-select'>
+                            <option value="selectHere">Pick one.</option>
+                            <option value="fideosSecos">Fideos Secos</option>
+                            <option value="pollo">Pollo Entero (coming soon)</option>
+                            <option value="azucar">Azucar Blanca (coming soon)</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label for="itemValue">Current Value:</label><br>
+                        <input type="text" class="formText p-1" id="itemValue">
+                        
+                    </div>
+                    <div class="col-2">
+                        <br>
+                        <button type="submit" class="formText p-1">groundIt</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
 </div>
 <div class="row mt-1">
-    <div class="col-3"></div>
-    <div class="col-6" style="box-shadow:black 10px 10px;background-color: rgb(255, 194, 82);">
+    <div class="col-2"></div>
+    <div class="col-8" style="box-shadow:black 10px 10px;background-color: rgb(255, 194, 82);">
         <h2 class="mt-2">Currently grounded:</h2>
         <div class="container-fluid my-4" id="currentlyGrounded"></div>
     </div>
 </div>
 <div class="row mt-5 py-5">
-    <div class="col-3"></div>
-        <div class="col-6" style="box-shadow:black 10px 10px;background-color: rgb(255, 194, 82);">
-            <h4 id='graphTitle' class="mt-2">Please select an item from the dropdown.</h4>
+    <div class="col-2"></div>
+        <div class="col-8" style="box-shadow:black 10px 10px;background-color: rgb(255, 194, 82);">
+            <h4 id='graphTitle' class="mt-2">Please select an item from the dropdown above.</h4>
             <div id="graph"></div>
         </div>
 </div>
@@ -61,4 +71,5 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 </body>
+<footer class="container-fluid" style="text-align:center;">Data obtained from: <a href="https://www.datos.gob.ar/">Datos Argentina</a></footer>
 </html>

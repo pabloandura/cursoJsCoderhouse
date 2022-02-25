@@ -32,7 +32,8 @@ function showGraph(){
 
     const config = {
         responsive: true,
-        editable: true
+        editable: true,
+        scrollZoom: true
     }
     
     Plotly.newPlot(graph,[
@@ -46,27 +47,52 @@ function showGraph(){
             type: 'scatter',
             x: fechasDolar,
             y: valorDolar,
-            name: "Valor promedio del dolar."
+            name: "Valor compra dolar oficial."
         }
         ], 
         layout,
         config)
 }
  // ESTA FUNCION ROMPE MI GRAFICO
-// function updatePlot(){
-//     let dataFideos = fideosSecos.logs
+function updatePlot(equis,griega){
+    
+    const graph = document.getElementById('graph');
 
-//     //creamos los arrays requeridos por plotly
-//     let fechasFideos = [];
-//     let valorFideo = [];
-//     for(let info of dataFideos){
-//         fechasFideos.push(info.date);
-//         valorFideo.push(info.value);
-//     }
+    const layout = {
+        title: 'Values of Commodities in Dolar Blue by ID and Date',
+        paper_bgcolor: "rgb(255, 194, 82)",
+        plot_bgcolor: "rgb(255, 180, 110)",
+        legend: {orientation: 'h', side: 'top'},
+        datarevision: 44
+    }   
 
-//     const graph = document.getElementById('graph');
-//     Plotly.restyle(graph,{
-//         x: fechasFideos,     // array de fechas en ms desde ES epoch (Como lo convierto a fechas?)
-//         y: valorFideo,     // array de valores}])
-//     })
-// }
+    const config = {
+        responsive: true,
+        editable: true,
+        scrollZoom: true
+    }
+
+    Plotly.react(graph,[
+        {
+            type: 'scatter',      // grafico de puntos
+            x: fechasFideo,     // array de fechas en ms desde ES epoch (Como lo convierto a fechas?)
+            y: valorFideo,     // array de valores
+            name: `${dataFideos.id}` // nombre
+        },
+        {
+            type: 'scatter',
+            x: fechasDolar,
+            y: valorDolar,
+            name: "Valor compra dolar oficial."
+        },
+        {
+            type: 'scatter',
+            x: [equis],
+            y: [griega],
+            name: "Informacion ingresada por usuario"
+        }
+        ], 
+        layout,
+        config
+        )
+}
