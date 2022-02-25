@@ -10,7 +10,7 @@ class GroundedLog{
         this.date = DateTime.now().toLocaleString(),
         this.valueBlue = 0
     }
-    async getValueBlue() {
+    async getValueBlue() { // conexion a la API, promesa dentro de promesa
         const resp = await fetch(url)
           .then((data) => data.json())
           .then((res) => res.blue.value_sell);
