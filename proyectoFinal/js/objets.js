@@ -16,7 +16,8 @@ class GroundedLog{
           .then((res) => res.blue.value_sell);
         this.valueBlue = resp;
     }
-}
+};
+
 // GroundedItem es un objeto creado para representar a cada commodity y albergara GroundedLogs
 class GroundedItem{
     constructor(id){
@@ -25,4 +26,15 @@ class GroundedItem{
         this.logs = [] // array vacio para ingresar logs
 
     }
-}
+};
+
+// objeto de seleccion para graph.js
+class Paquete{
+    constructor(x,y){
+        this.x = x, //array para Plotly
+        this.y = y // tambien
+    }
+};
+
+// siempre hay un solo paquete por app
+const PKT = new Paquete([],[]);

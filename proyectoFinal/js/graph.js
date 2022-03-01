@@ -22,19 +22,34 @@ for (let log of OFICIAL){
 
 let dataFideos = JSON.parse(sessionStorage.getItem('fideos'));
 
-    //creamos los arrays requeridos por plotly
+//creamos los arrays requeridos por plotly
 const fechasFideo = [];
 const valorFideo = [];
-    for(let info of dataFideos.logs){
-        fechasFideo.push(info.date);
-        valorFideo.push(info.value);
-    }
+
+for(let log of dataFideos.logs){
+    let {date, value} = log;
+    fechasFideo.push(date);
+    valorFideo.push(value);
+}
+
+let dataPollo = JSON.parse(sessionStorage.getItem('pollo'));
+
+//creamos los arrays requeridos por plotly
+const fechasPollo = [];
+const valorPollo = [];
+
+for(let log of dataPollo.logs){
+    let {date, value} = log;
+    fechasPollo.push(date);
+    valorPollo.push(value);
+}
+
 
 /* Funcion para mostrar la seccion de Graficos con libreria PlotlyJS */
-function showGraph(){
+function showGraph(param){
 
     const graph = document.getElementById('graph');
-
+    
     const layout = {
         title: 'Values of Commodities in Dolar Blue by ID and Date',
         paper_bgcolor: "rgb(255, 194, 82)",
@@ -50,9 +65,9 @@ function showGraph(){
     Plotly.newPlot(graph,[
         {
             type: 'scatter',      // grafico de puntos
-            x: fechasFideo,     // array de fechas en ms desde ES epoch (Como lo convierto a fechas?)
-            y: valorFideo,     // array de valores
-            name: `${dataFideos.id}` // nombre
+            x: param.x,     // array de fechas en ms desde ES epoch
+            y: param.y,     // array de valores
+            name: `${event.target.value}` // nombre
         },
         {
             type: 'scatter',
@@ -71,10 +86,10 @@ function showGraph(){
         config)
 }
  // ESTA FUNCION ROMPE MI GRAFICO
-function updatePlot(equis,griega){
-    
+function updatePlot(equis,griega,param){
+        // adonde lo ponemos?
     const graph = document.getElementById('graph');
-
+        // configuracion y estetica
     const layout = {
         title: 'Values of Commodities in Dolar Blue by ID and Date',
         paper_bgcolor: "rgb(255, 194, 82)",
@@ -88,11 +103,12 @@ function updatePlot(equis,griega){
         scrollZoom: true
     }
 
+
     Plotly.react(graph,[
         {
             type: 'scatter',      // grafico de puntos
-            x: fechasFideo,     // array de fechas en ms desde ES epoch (Como lo convierto a fechas?)
-            y: valorFideo,     // array de valores
+            x: param.x,     // array de fechas en ms desde ES epoch 
+            y: param.y,     // array de valores
             name: `${dataFideos.id}` // nombre
         },
         {
