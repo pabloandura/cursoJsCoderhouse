@@ -1,11 +1,23 @@
 /* Pre procesos para el grafico */
-const fechasDolar = [];
-const valorDolar = [];
 
-for (let log of dataDolar){
+// Dolar Blue
+const fechasBlue = [];
+const valorBlue = [];
+
+for (let log of BLUE){
+    let {date , value} = log;
+    fechasBlue.push(date);
+    valorBlue.push(value);
+}
+
+// Dolar Oficial
+const fechasOficial = [];
+const valorOficial = [];
+
+for (let log of OFICIAL){
     let {date , compra} = log;
-    fechasDolar.push(date);
-    valorDolar.push(compra);
+    fechasOficial.push(date);
+    valorOficial.push(compra);
 }
 
 let dataFideos = JSON.parse(sessionStorage.getItem('fideos'));
@@ -32,7 +44,6 @@ function showGraph(){
 
     const config = {
         responsive: true,
-        editable: true,
         scrollZoom: true
     }
     
@@ -45,9 +56,15 @@ function showGraph(){
         },
         {
             type: 'scatter',
-            x: fechasDolar,
-            y: valorDolar,
-            name: "Valor compra dolar oficial."
+            x: fechasOficial,
+            y: valorOficial,
+            name: "Dolar oficial."
+        },
+        {
+            type: 'scatter',
+            x: fechasBlue,
+            y: valorBlue,
+            name: "Dolar Blue."
         }
         ], 
         layout,
@@ -68,7 +85,6 @@ function updatePlot(equis,griega){
 
     const config = {
         responsive: true,
-        editable: true,
         scrollZoom: true
     }
 
@@ -81,9 +97,14 @@ function updatePlot(equis,griega){
         },
         {
             type: 'scatter',
-            x: fechasDolar,
-            y: valorDolar,
+            x: fechasOficial,
+            y: valorOficial,
             name: "Valor compra dolar oficial."
+        },{
+            type: 'scatter',
+            x: fechasBlue,
+            y: valorBlue,
+            name: "Valor compra dolar blue."
         },
         {
             type: 'scatter',

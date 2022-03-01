@@ -1,4 +1,4 @@
-const dataDolar = [
+const OFICIAL = [
 {date:'2022-02-18',compra:106.48},
 {date:'2022-02-17',compra:106.24},
 {date:'2022-02-16',compra:106.21},
@@ -1464,5 +1464,3 @@ const dataDolar = [
 {date:'2016-04-04',compra:14.66},
 {date:'2016-04-01',compra:14.62},
 ];
-
- 
