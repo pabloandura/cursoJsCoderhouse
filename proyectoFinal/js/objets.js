@@ -30,11 +30,12 @@ class GroundedItem{
 
 // objeto de seleccion para graph.js
 class Paquete{
-    constructor(x,y){
+    constructor(x,y,name){
         this.x = x, //array para Plotly
-        this.y = y // tambien
+        this.y = y, // tambien
+        this.name = name
     }
 };
 
 // siempre hay un solo paquete por app
-const PKT = new Paquete([],[]);
+const PKT = new Paquete([],[],'nothing');

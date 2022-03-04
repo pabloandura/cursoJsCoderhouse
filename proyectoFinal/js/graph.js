@@ -67,7 +67,7 @@ function showGraph(param){
             type: 'scatter',      // grafico de puntos
             x: param.x,     // array de fechas en ms desde ES epoch
             y: param.y,     // array de valores
-            name: `${event.target.value}` // nombre
+            name: `${param.name}` // nombre
         },
         {
             type: 'scatter',
@@ -109,7 +109,7 @@ function updatePlot(equis,griega,param){
             type: 'scatter',      // grafico de puntos
             x: param.x,     // array de fechas en ms desde ES epoch 
             y: param.y,     // array de valores
-            name: `${dataFideos.id}` // nombre
+            name: `${param.name}` // nombre
         },
         {
             type: 'scatter',

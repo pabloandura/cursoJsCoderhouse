@@ -9,7 +9,7 @@ const azucar = new GroundedItem('azucar');
 const ITEMS = [];
 ITEMS.push(fideosSecos);
 ITEMS.push(pollo);
-ITEMS.push(azucar);
+ITEMS.push(azucar)
 
 const FIDEOS = [
 {id: 'fideosSecos', msFromEpoch: Date.parse('2016-04-01') , date:'2016-04-01', value: 16.56},

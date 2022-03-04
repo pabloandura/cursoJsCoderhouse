@@ -22,12 +22,14 @@ const selectedItem = document.getElementById('itemID');
             case 'fideosSecos':
                 PKT.x = fechasFideo;
                 PKT.y = valorFideo;
+                PKT.name = event.target.value;
                 graphTitle.innerHTML = `Historical price comparison for "${event.target.value}".` // agrego al string el nombre de seleccion
                 showGraph(PKT);
                 break;
             case 'pollo':
                 PKT.x = fechasPollo;
                 PKT.y = valorPollo;
+                PKT.name = event.target.value;
                 graphTitle.innerHTML = `Historical price comparison for "${event.target.value}".` // agrego al string el nombre de seleccion
                 showGraph(PKT);
                 break;        
