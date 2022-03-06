@@ -20,6 +20,7 @@ const selectedItem = document.getElementById('itemID');
         console.log(event.target.value)
         switch(event.target.value){
             case 'fideosSecos':
+                document.getElementById('graph').style = 'display: block;' // muestro grafico
                 PKT.x = fechasFideo;
                 PKT.y = valorFideo;
                 PKT.name = event.target.value;
@@ -27,6 +28,7 @@ const selectedItem = document.getElementById('itemID');
                 showGraph(PKT);
                 break;
             case 'pollo':
+                document.getElementById('graph').style = 'display: block;' // muestro grafico
                 PKT.x = fechasPollo;
                 PKT.y = valorPollo;
                 PKT.name = event.target.value;
